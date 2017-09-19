@@ -1,0 +1,93 @@
+<!--Mobile Device Tester 1.0 - Olli Pelkkikangas - 2017 -->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Mobile Device Tester</title>
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="style-dist.css" media="screen" />
+	</head>
+
+	<body>
+
+		<div class="siteInput">
+			<h3>Url:</h3>
+			<input type="text" value="http://" id="frameUrl">
+			<input type="submit" value="Go!" id="frameButton" onclick="loadIframe(frameUrl.value)">
+		</div>
+
+		<div class="controlsToggle" id="controlsToggle" onclick="toggleClass('controls', 'hidden'); toggleClass('controlsToggle', 'hidden')"></div>
+		<div class="controls" id="controls">
+			<h3>Controls</h3>
+			<div class="control">
+				<h5>Device</h5>
+				<div class="phone active" id="phoneControl" onclick="switchClass('phone','tablet');rotatePhone(angle.value);">Phone</div>
+				<div class="tablet" id="tabletControl" onclick="switchClass('tablet','phone');rotatePhone(angle.value);">Tablet</div>
+			</div>
+			<div class="control">
+				<h5>Rotate device</h5>
+				<div class="portrait active" id="portraitControl" onclick="switchClass('portrait','landscape');rotatePhone(angle.value);">Portrait</div>
+				<div class="landscape" id="landscapeControl" onclick="switchClass('landscape','portrait');rotatePhone(angle.value);">Landscape</div>
+			</div>
+			<div class="control">
+				<h5>Device color</h5>
+				<div class="black active" id="blackControl" onclick="switchClass('black','white');rotatePhone(angle.value);">Black</div>
+				<div class="white" id="whiteControl" onclick="switchClass('white','black');rotatePhone(angle.value);">White</div>
+			</div>
+			<div class="control">
+				<h5>Adjust angle</h5>
+				<input type="range" list="tickmarks" id="angle" min="-30" max="30" step="5" oninput="rotatePhone(this.value)" onchange="rotatePhone(this.value)">
+				<span id="degree">0 deg</span>
+			</div>
+			<div class="control">
+				<h5>Adjust scale</h5>
+				<input type="range" list="tickmarks" id="scale" min="0.4" max="2" step="0.05" oninput="scalePhone(this.value)" onchange="scalePhone(this.value)">
+				<span id="size">1</span>
+			</div>
+			<div class="control">
+				<h5>Status bar</h5>
+				<span class="option"><input type="checkbox" id="hiddenControl" onchange="toggleClass('phone-header', 'hidden'), disableControl()"> Hidden</span>
+				<span class="option"><input type="checkbox" id="invertControl" onchange="toggleClass('phone-header', 'white')"> Invert color</span>
+				<span class="option"><input type="checkbox" id="reserveControl" onchange="toggleClass('screen', 'reserve-space')"> Reserve space</span>
+			</div>
+			
+			<div class="control">
+				<h5>Background</h5>
+				<span class="option"><input type="color" id="color1" value="#f2f2f2" onchange="changeColor()">top
+				<input type="color" id="color2" value="#444444" onchange="changeColor()">bottom</span>
+			</div>
+		</div>
+
+		<div class="container" id="container">
+			<div class="device phone portrait black" id="device">
+				<div class="edges" id="edges">
+					<div class="reflection" id="reflection"></div>
+					<div class="frame" id="frame">
+							<div class="head"></div>
+							<div class="screen" id="screen">
+								<div class="phone-header" id="phone-header">
+									<span class="left">
+										<span class="icon signal">
+											<span class="dot full"></span><span class="dot full"></span><span class="dot full"></span><span class="dot"></span><span class="dot"></span>
+										</span> 
+										<span class="operator">Operator</span> 
+										<span class="connection">4G</span> 
+									</span>
+									<span class="center clock">14:06</span>
+									<span class="right">
+										<span class="percentage">84%</span>
+										<span class="icon battery" ></span>
+									</span>
+								</div>
+								<iframe id="iframe" src="content.htm"></iframe>
+								<!--<h1>Your mobile app here!</h1>-->
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="mdt-dist.js"></script>
+	</body>
+	
+</html>
