@@ -6,6 +6,7 @@ There are no external JS libraries, images or icon fonts and whole solution is a
 
 iFrame loader doesn't work too well over web since most sites are blocking it. Best way to use Mobile Device Tester is to load a copy and drive it with local content.
 
-Switching default mobile device to iPhone X at some point. Maybe even adding some device listing of the popular models.
+Switching default mobile device to iPhone X at some point. Maybe even adding some device listing of the popular models. Browser support is limited to browsers that support HTML5. Developed on Chrome. Should work on IE Edge and some limited functionality on IE11/FF.
+
 Hope you find this helpful!
 
